@@ -1,0 +1,15 @@
+:root {
+  --bg-main: #0b1220;
+  --bg-card: #111a2e;
+  --accent-blue: #00b4ff;
+  --text-main: #e6f1ff;
+  --text-muted: #8aa4c1;
+  --danger: #ff4d4f;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0f1c3a, #05080f);
+  color: var(--text-main);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
