@@ -1,18 +1,28 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 
-const data = [
-  { name: "Temp", value: 32 },
-  { name: "Speed", value: 0.9 },
-  { name: "Distance", value: 1.3 }
-];
+export default function SensorBarChart({ readings }) {
+  if (!readings || readings.length === 0) {
+    return <p>No data</p>;
+  }
 
-export default function SensorBarChart() {
+  const data = readings.map((r, index) => ({
+    name: index + 1,
+    value: r.pressure,
+  }));
+
   return (
-    <div>
-      <h3>Sensor Values</h3>
+    <div style={{ background: "var(--bg-card)", padding: 16, borderRadius: 12 }}>
+      <h3>Pressure History</h3>
       <BarChart width={350} height={250} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis />
         <YAxis />
         <Tooltip />
         <Bar dataKey="value" />

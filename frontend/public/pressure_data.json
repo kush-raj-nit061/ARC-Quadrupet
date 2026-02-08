@@ -1,0 +1,241 @@
+{
+  "readings": [
+    {
+      "pressure": 45,
+      "timestamp": "2026-02-08T10:00:00Z"
+    },
+    {
+      "pressure": 68,
+      "timestamp": "2026-02-08T10:01:00Z"
+    },
+    {
+      "pressure": 89,
+      "timestamp": "2026-02-08T10:02:00Z"
+    },
+    {
+      "pressure": 61,
+      "timestamp": "2026-02-08T19:11:24.110226Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 68,
+      "timestamp": "2026-02-08T19:12:33.358271Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 61,
+      "timestamp": "2026-02-08T19:12:36.909001Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 72,
+      "timestamp": "2026-02-08T19:12:40.555502Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 72,
+      "timestamp": "2026-02-08T19:12:44.983747Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 61,
+      "timestamp": "2026-02-08T19:16:51.863840Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 62,
+      "timestamp": "2026-02-08T19:17:01.164570Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 62,
+      "timestamp": "2026-02-08T19:17:06.810660Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 56,
+      "timestamp": "2026-02-08T19:17:09.738467Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 52,
+      "timestamp": "2026-02-08T19:17:12.742872Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 51,
+      "timestamp": "2026-02-08T19:17:14.971413Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 52,
+      "timestamp": "2026-02-08T19:17:17.174695Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 63,
+      "timestamp": "2026-02-08T19:17:19.820250Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 52,
+      "timestamp": "2026-02-08T19:17:23.325988Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 61,
+      "timestamp": "2026-02-08T19:17:25.601170Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 62,
+      "timestamp": "2026-02-08T19:17:27.628529Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 52,
+      "timestamp": "2026-02-08T19:17:30.824096Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 66,
+      "timestamp": "2026-02-08T19:20:17.553964Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 51,
+      "timestamp": "2026-02-08T19:20:33.083592Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 58,
+      "timestamp": "2026-02-08T19:20:36.337773Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 68,
+      "timestamp": "2026-02-08T19:20:39.251727Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 61,
+      "timestamp": "2026-02-08T19:20:43.741197Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 52,
+      "timestamp": "2026-02-08T19:21:11.531300Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 59,
+      "timestamp": "2026-02-08T19:21:20.584525Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 57,
+      "timestamp": "2026-02-08T19:21:24.924954Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 62,
+      "timestamp": "2026-02-08T19:21:27.771838Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 56,
+      "timestamp": "2026-02-08T19:21:30.654529Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 31,
+      "timestamp": "2026-02-08T19:21:33.329642Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 75,
+      "timestamp": "2026-02-08T19:21:35.888216Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 59,
+      "timestamp": "2026-02-08T19:26:35.493662Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 61,
+      "timestamp": "2026-02-08T19:26:44.230687Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 58,
+      "timestamp": "2026-02-08T19:27:05.616576Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 52,
+      "timestamp": "2026-02-08T19:27:08.025244Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 62,
+      "timestamp": "2026-02-08T19:27:10.170089Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 58,
+      "timestamp": "2026-02-08T19:27:12.377752Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 58,
+      "timestamp": "2026-02-08T19:27:14.766639Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 57,
+      "timestamp": "2026-02-08T19:27:17.021641Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 56,
+      "timestamp": "2026-02-08T19:27:19.445320Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 59,
+      "timestamp": "2026-02-08T19:27:23.101154Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 37,
+      "timestamp": "2026-02-08T19:27:26.520917Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 45,
+      "timestamp": "2026-02-08T19:27:30.266043Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 57,
+      "timestamp": "2026-02-08T19:27:33.532279Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 65,
+      "timestamp": "2026-02-08T19:27:36.905251Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 56,
+      "timestamp": "2026-02-08T19:27:47.561552Z",
+      "source": "gemma3-vision"
+    },
+    {
+      "pressure": 58,
+      "timestamp": "2026-02-08T19:28:56.363636Z",
+      "source": "gemma3-vision"
+    }
+  ]
+}
