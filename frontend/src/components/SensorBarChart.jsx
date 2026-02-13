@@ -9,43 +9,34 @@ import {
 } from "recharts";
 
 export default function SensorBarChart({ readings }) {
-  if (!readings || readings.length === 0) {
-    return <p>No data</p>;
-  }
+  if (!readings?.length) return <p>No data</p>;
 
-  const data = readings.map((r, index) => ({
-    name: index + 1,
+  const data = readings.map((r, i) => ({
+    name: i + 1,
     value: r.pressure,
   }));
 
   const getBarColor = (value) => {
-    if (value < 30) return "#22c55e";   // green
-    if (value <= 40) return "#eab308";  // yellow
-    if (value <= 50) return "#f97316";  // orange (buffer zone)
-    return "#ef4444";                   // red
+    if (value < 30) return "var(--green)";
+    if (value <= 40) return "var(--yellow)";
+    if (value <= 50) return "#f97316";
+    return "var(--red)";
   };
 
   return (
-    <div
-      style={{
-        background: "var(--bg-card)",
-        padding: 16,
-        borderRadius: 12,
-      }}
-    >
-      <h3>Pressure History</h3>
+    <div className="telemetry-chart">
+      <h3 className="telemetry-section-title">
+        Pressure History
+      </h3>
 
-      <BarChart width={350} height={250} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis />
-        <YAxis />
+      <BarChart width={500} height={260} data={data}>
+        <CartesianGrid stroke="var(--border)" />
+        <XAxis stroke="var(--textdim)" />
+        <YAxis stroke="var(--textdim)" />
         <Tooltip />
         <Bar dataKey="value">
           {data.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={getBarColor(entry.value)}
-            />
+            <Cell key={index} fill={getBarColor(entry.value)} />
           ))}
         </Bar>
       </BarChart>

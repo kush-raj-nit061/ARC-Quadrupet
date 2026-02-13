@@ -1,0 +1,209 @@
+h1 { font-size: 28px; font-weight: 600; }
+h2 { font-size: 20px; font-weight: 600; }
+h3 { font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+.metric-large {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.metric-medium {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.metric-small {
+  font-size: 13px;
+  color: var(--textdim);
+}
+
+
+:root {
+  --bg: #0a0f1c;
+  --panel: #0f172a;
+  --border: #1f2937;
+  --accent: #00e5ff;
+  --green: #22c55e;
+  --yellow: #eab308;
+  --red: #ef4444;
+  --text: #e6f1ff;
+  --textdim: #94a3b8;
+}
+
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+}
+
+
+.dashboard-layout {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* BODY WRAPPER */
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  flex: 1;
+}
+
+/* SIDEBAR */
+.dashboard-sidebar {
+  border-right: 1px solid var(--border);
+  padding: 40px 24px;
+  background: #0b1220;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* MAIN */
+.dashboard-main {
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1400px;
+}
+
+/* HERO */
+.dashboard-hero {
+  width: 100%;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+}
+
+
+/* PANELS */
+.telemetry-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.telemetry-title {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+/* RAW JSON */
+.telemetry-raw {
+  font-size: 12px;
+  max-height: 240px;
+  overflow: auto;
+  color: var(--textdim);
+}
+
+
+
+.telemetry-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.telemetry-title {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.battery-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.battery-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.battery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.battery-box {
+  background: #0b1220;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+
+
+.imu-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.imu-orientation {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.imu-box {
+  background: #0b1220;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.imu-box:hover {
+  border-color: var(--accent);
+}
+
+.imu-warning {
+  border-color: var(--red);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.imu-accel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.imu-accel-box {
+  background: #0c1422;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+

@@ -4,16 +4,8 @@ import { database } from "../firebase";
 
 function Card({ title, value, color }) {
   return (
-    <div
-      style={{
-        background: "var(--bg-card)",
-        borderRadius: "12px",
-        padding: "18px",
-        width: "180px",
-        boxShadow: "0 0 15px rgba(0,180,255,0.15)",
-      }}
-    >
-      <p style={{ color: "var(--text-muted)" }}>{title}</p>
+    <div className="telemetry-card">
+      <p className="telemetry-card-title">{title}</p>
       <h2 style={{ color }}>{value}</h2>
     </div>
   );
@@ -36,64 +28,30 @@ export default function StatusCards() {
   }, []);
 
   const batteryColor =
-    battery < 20 ? "#ef4444" :
-    battery < 50 ? "#eab308" :
-    "#22c55e";
+    battery < 20 ? "var(--red)" :
+    battery < 50 ? "var(--yellow)" :
+    "var(--green)";
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "20px",
-      }}
-    >
-      <Card title="Robot Status" value="ONLINE" color="var(--accent-blue)" />
+    <div className="telemetry-card-row">
+      <Card title="Robot Status" value="ONLINE" color="var(--accent)" />
       <Card title="Battery" value={`${battery}%`} color={batteryColor} />
-      <Card title="Mode" value="AUTONOMOUS" color="var(--accent-blue)" />
-      {/* Push button to the right */}
-      <div style={{ marginLeft: "auto" }}>
-        <button
-          onClick={async () => {
-            try {
-              const response = await fetch("http://localhost:8000/run-fetch", {
-                method: "POST",
-              });
+      <Card title="Mode" value="AUTONOMOUS" color="var(--accent)" />
 
-              const data = await response.json();
-              console.log("Python Output:", data);
-
-            } catch (error) {
-              console.error("Error running script:", error);
-            }
-          }}
-
-          style={{
-            background: "linear-gradient(135deg, #00b4ff, #0077ff)",
-            color: "#fff",
-            border: "none",
-            borderRadius: "10px",
-            padding: "14px 22px",
-            marginBottom: "123px",
-            fontSize: "23px",
-            fontWeight: "600",
-            cursor: "pointer",
-            boxShadow: "0 0 18px rgba(0,180,255,0.4)",
-            transition: "transform 0.15s ease, box-shadow 0.15s ease",
-          }}
-          onMouseDown={(e) =>
-            (e.currentTarget.style.transform = "scale(0.96)")
+      <button
+        className="telemetry-button"
+        onClick={async () => {
+          try {
+            await fetch("http://localhost:8000/run-fetch", {
+              method: "POST",
+            });
+          } catch (error) {
+            console.error("Error running script:", error);
           }
-          onMouseUp={(e) =>
-            (e.currentTarget.style.transform = "scale(1)")
-          }
-        >
-          SEND GO2
-        </button>
-      </div>
-
+        }}
+      >
+        SEND GO2
+      </button>
     </div>
-
-    
   );
 }

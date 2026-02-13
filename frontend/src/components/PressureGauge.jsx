@@ -35,7 +35,7 @@ export default function PressureGauge({ latest }) {
       </h3>
 
       {/* Semi-circular gauge */}
-      <div style={{ width: "100%", height: 140 }}>
+      <div style={{ width: "220px", margin: "0 auto" }}>
         <CircularProgressbar
           value={pressure}
           maxValue={120}

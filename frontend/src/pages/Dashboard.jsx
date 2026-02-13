@@ -1,42 +1,43 @@
 import { useEffect, useState } from "react";
 
-import Header from "../components/Header";
 import StatusCards from "../components/StatusCards";
-import TaskPieChart from "../components/TaskPieChart";
 import SensorBarChart from "../components/SensorBarChart";
 import PressureGauge from "../components/PressureGauge";
 import AlertDialog from "../components/AlertDialog";
 import InfosysLogo from "../components/InfosysLogo";
 import GaugeImage from "../components/GaugeImage";
+import TelemetryPanel from "../components/TelemetryPanel";
+import StatusPill from "../components/StatusPill";
 
+import BatteryPanel from "../components/BatteryPanel";
+import MotorHeatmap from "../components/MotorHeatmap";
+import IMUPanel from "../components/IMUPanel";
 
 export default function Dashboard() {
-  const [readings, setReadings] = useState([]);
 
+  const [readings, setReadings] = useState([]);
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
   const [alertShown, setAlertShown] = useState(false);
+  const [connected, setConnected] = useState(true);
 
-  // 🔹 Load pressure JSON on page load
+  // Load pressure JSON
   useEffect(() => {
     fetch("/pressure_data.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load pressure_data.json");
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         setReadings(data.readings || []);
+        setConnected(true);
       })
-      .catch((err) => {
-        console.error("Error loading pressure data:", err);
+      .catch(() => {
+        setConnected(false);
       });
   }, []);
 
-  // 🔹 Latest pressure reading
   const latestReading =
     readings.length > 0 ? readings[readings.length - 1] : null;
 
-  // 🚨 ALERT LOGIC
+  // Alert logic
   useEffect(() => {
     if (!latestReading) return;
 
@@ -54,77 +55,96 @@ export default function Dashboard() {
   }, [latestReading, alertShown]);
 
   return (
-    <div style={{ padding: "24px" }}>
-      <header style={{ display: "flex", alignItems: "center", gap: "12px",marginBottom: "24px" }}>
-        <InfosysLogo width={180} />
-        <h1 style={{ color: "#00b4ff", margin: 0 }}>
-          Robotics Command Center
-        </h1>
-      </header>
+  <div className="dashboard-layout">
 
-      {/* ✅ SCROLLABLE CONTENT (NEW) */}
-      <div
-        style={{
-          position: "fixed",
-          top: "140px", // header height offset
-          left: 0,
-          right: 0,
-          bottom: 0,
-          overflowY: "auto",
-          padding: "24px",
-        }}
-      >
-        {/* STATUS CARDS */}
-        <StatusCards />
-
-      {/* MAIN GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gap: "24px",
-          marginTop: "30px",
-        }}
-      >
-        {/* PIE CHART → latest reading */}
-        <GaugeImage />
-        {/* <TaskPieChart latest={latestReading} /> */}
-
-        {/* BAR CHART → historical readings */}
-        <SensorBarChart readings={readings} />
-
-        {/* GAUGE → latest reading */}
-        <PressureGauge latest={latestReading} />
+    {/* HEADER */}
+    <div className="dashboard-header">
+      <div className="dashboard-title">
+        <InfosysLogo width={140} />
+        <h1>Robotics Command Center</h1>
       </div>
-
-     {/* NEW ROW */}
-     {/* <div style={{ marginTop: 30 }}>
-        <GaugeImage />
-      </div> */}
-
-        {/* DEBUG JSON VIEW (optional) */}
-        <pre
-          style={{
-            marginTop: 30,
-            background: "#0b1220",
-            padding: 12,
-            borderRadius: 8,
-            fontSize: 12,
-            color: "#7dd3fc",
-            maxHeight: 220,
-            overflow: "auto",
-          }}
-        >
-          {JSON.stringify(readings, null, 2)}
-        </pre>
-      </div>
-
-      {/* ALERT DIALOG */}
-      <AlertDialog
-        open={alertOpen}
-        message={alertMsg}
-        onClose={() => setAlertOpen(false)}
-      />
+      <StatusPill connected={connected} />
     </div>
-  );
+
+    <div className="dashboard-body">
+
+      {/* SIDEBAR */}
+      <aside className="dashboard-sidebar">
+        <TelemetryPanel title="ROBOT STATUS">
+          <div className="metric-medium">ONLINE</div>
+          <div className="metric-small">Mode: AUTONOMOUS</div>
+        </TelemetryPanel>
+      </aside>
+
+      {/* MAIN CONTENT */}
+      <main className="dashboard-main">
+
+        {/* ROW 1 */}
+        <div className="dashboard-grid">
+          <TelemetryPanel title="BATTERY SYSTEM">
+            <BatteryPanel />
+          </TelemetryPanel>
+
+          <TelemetryPanel title="MOTOR TEMPERATURE">
+            <MotorHeatmap />
+          </TelemetryPanel>
+        </div>
+
+        {/* 🔥 FULL WIDTH 3D VIEW */}
+        <TelemetryPanel title="3D ROBOT VIEW">
+          <div style={{ height: "500px" }}>
+            <iframe
+              src="http://localhost:3001"
+              title="GO2 3D Viewer"
+              style={{
+                width: "100%",
+                height: "100%",
+                border: "none",
+                borderRadius: "10px",
+              }}
+            />
+          </div>
+        </TelemetryPanel>
+
+        {/* ROW 2 */}
+        <div className="dashboard-grid">
+          <TelemetryPanel title="IMU STATUS">
+            <IMUPanel />
+          </TelemetryPanel>
+
+          <TelemetryPanel title="PRESSURE MONITOR">
+            <PressureGauge latest={latestReading} />
+          </TelemetryPanel>
+        </div>
+
+        {/* ROW 3 */}
+        <div className="dashboard-grid">
+          <TelemetryPanel title="HISTORICAL SENSOR DATA">
+            <SensorBarChart readings={readings} />
+          </TelemetryPanel>
+
+          <TelemetryPanel title="VISUAL FEEDBACK">
+            <GaugeImage />
+          </TelemetryPanel>
+        </div>
+
+        {/* RAW TELEMETRY */}
+        <TelemetryPanel title="RAW TELEMETRY DATA">
+          <pre className="telemetry-raw">
+            {JSON.stringify(readings, null, 2)}
+          </pre>
+        </TelemetryPanel>
+
+      </main>
+    </div>
+
+    <AlertDialog
+      open={alertOpen}
+      message={alertMsg}
+      onClose={() => setAlertOpen(false)}
+    />
+
+  </div>
+);
+
 }
